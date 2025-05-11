@@ -28,7 +28,7 @@ WeatherService is a backend application designed to provide weather data to clie
    ```bash
    npm install
    ```
-4. Create a `.env` file in the root directory and configure the required environment variables:
+4. Create a `.env` file in the root directory by by copying the EXAMPLE.env file and configure the required environment variables:
    ```env
    API_KEY=your_openweather_api_key
    PORT=3000
