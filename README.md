@@ -1,7 +1,7 @@
 # WeatherService
 
-## Project Description
-WeatherService is a robust and scalable backend service designed to provide weather data to clients. It integrates with external weather APIs, processes the data, and serves it through well-defined endpoints. The project is built with Node.js and TypeScript, ensuring type safety and modern JavaScript features.
+## Project Overview
+WeatherService is a backend application designed to provide weather data to clients. It integrates with external weather APIs, processes the data, and serves it through well-defined endpoints. The project is built using Node.js and TypeScript, ensuring type safety and modern JavaScript features.
 
 ## Features
 - Fetch current weather data for a given location.
@@ -9,14 +9,16 @@ WeatherService is a robust and scalable backend service designed to provide weat
 - Centralized logging using Winston.
 - Comprehensive test coverage with Jest.
 
-## Prerequisites
+## Getting Started
+
+### Prerequisites
 - Node.js (v14 or later)
 - npm (v6 or later)
 
-## Setup Instructions
+### Setup Instructions
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-repo/WeatherService.git
+   git clone https://github.com/PointOfNullReturn/WeatherService.git
    ```
 2. Navigate to the project directory:
    ```bash
@@ -36,35 +38,22 @@ WeatherService is a robust and scalable backend service designed to provide weat
    npm run dev
    ```
 
-## API Endpoints
-### 1. Get Current Weather
-- **Endpoint:** `/api/weather`
-- **Method:** `GET`
-- **Query Parameters:**
-  - `lat` (required): Latitude of the location.
-  - `lon` (required): Longitude of the location.
-- **Example Request:**
-  ```bash
-  curl "http://localhost:3000/api/weather?lat=40.7128&lon=-74.0060"
-  ```
-- **Response:**
-  ```json
-  {
-    "temperature": 22.5,
-    "description": "clear sky",
-    "humidity": 60
-  }
-  ```
+## Running the Project
+To start the application in development mode, use the following command:
+```bash
+npm run dev
+```
+The server will start on the port specified in the `.env` file (default: 3000).
 
-## Testing Instructions
-1. Run the test suite:
-   ```bash
-   npm test
-   ```
-2. View test coverage:
-   ```bash
-   npm run test:coverage
-   ```
+## Unit Testing
+This project uses Jest for unit testing. To run the tests, use the following command:
+```bash
+npm test
+```
+To view test coverage, run:
+```bash
+npm run test:coverage
+```
 
 ## Project Structure
 ```
@@ -76,6 +65,12 @@ server/
 │   ├── utils/            # Utility functions and classes
 │   │   ├── WinstonLogger.ts
 │   │   └── Logger.interface.ts
+│   ├── routes/           # API route handlers
+│   │   ├── InfoRoute.ts
+│   │   └── WeatherRoute.ts
+│   ├── services/         # Service layer for business logic
+│   │   ├── OpenWeatherService.ts
+│   │   └── WeatherService.interface.ts
 │   └── types/            # Type definitions
 │       └── CoordinatesQuery.ts
 ├── tests/                # Test cases
@@ -83,7 +78,7 @@ server/
 └── README.md             # Project documentation
 ```
 
-## Logging Details
+## Logging
 This project uses Winston for logging. Logs are categorized into different levels (info, error, debug) and can be configured in `WinstonLogger.ts`.
 
 ## Contribution Guidelines
