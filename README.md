@@ -1,7 +1,7 @@
 # WeatherService
 
 ## Project Overview
-WeatherService is a backend application designed to provide weather data to clients. It integrates with external weather APIs, processes the data, and serves it through well-defined endpoints. The project is built using Node.js and TypeScript, ensuring type safety and modern JavaScript features.
+WeatherService is a backend application designed to provide weather data to clients. It integrates with external weather APIs, processes the data, and serves it through well-defined endpoints. The project is built using Node.js, TypeScript, and Express ensuring type safety and modern JavaScript features.
 
 ## Features
 - Fetch current weather data for a given location.
