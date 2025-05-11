@@ -14,6 +14,7 @@ WeatherService is a backend application designed to provide weather data to clie
 ### Prerequisites
 - Node.js (v14 or later)
 - npm (v6 or later)
+- OpenWeather API Subscription and API Key (You'll need a subscription to the One Call API 3.0)
 
 ### Setup Instructions
 1. Clone the repository:
