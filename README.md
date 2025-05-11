@@ -63,6 +63,8 @@ server/
 │   ├── index.ts          # Entry point of the application
 │   ├── mappers/          # Data mappers for external APIs
 │   │   └── OpenWeatherMapper.ts
+│   ├── models/           # Models
+│   │   └── WeatherServiceData.ts
 │   ├── utils/            # Utility functions and classes
 │   │   ├── WinstonLogger.ts
 │   │   └── Logger.interface.ts
