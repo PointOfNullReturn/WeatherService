@@ -7,6 +7,7 @@ import OpenWeatherService from './services/OpenWeatherService';
 import OpenWeatherMapper from './mappers/OpenWeatherMapper';
 import ILogger from './utils/Logger.interface';
 import { WinstonLogger } from './utils/WinstonLogger';
+import { apiKeyValidator } from './middleware/apiKeyValidator';
 
 /**
  * Entry point for the WeatherService application.
@@ -51,13 +52,16 @@ if (!apiKey || !baseUrl) {
 const weatherMapper = new OpenWeatherMapper(logger);
 const weatherService = new OpenWeatherService(logger, apiKey, baseUrl, axios, weatherMapper);
 
+// Middleware to parse API Keys
+app.use(apiKeyValidator);
+
 // Create instances of Routes
 const infoRoute = new InfoRoute(logger);
 const weatherRoute = new WeatherRoute(logger, weatherService);
 
 // Use Routes
-app.use('/api/v1/info', infoRoute.getRouter());
-app.use('/api/v1/weather', weatherRoute.getRouter());
+app.use('/api/v1/info', apiKeyValidator, infoRoute.getRouter());
+app.use('/api/v1/weather', apiKeyValidator, weatherRoute.getRouter());
 
 // Start the Server
 app.listen(PORT, () => {
