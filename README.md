@@ -14,7 +14,8 @@ WeatherService is a backend application designed to provide weather data to clie
 ### Prerequisites
 - Node.js (v14 or later)
 - npm (v6 or later)
-- OpenWeather API Subscription and API Key (You'll need a subscription to the One Call API 3.0)
+- OpenWeather API Subscription and OpenWeather API Key (You'll need a subscription to the One Call API 3.0)
+- An API key created for this project.
 
 ### Setup Instructions
 1. Clone the repository:
@@ -64,6 +65,32 @@ To view test coverage, run:
 npm run test:coverage
 ```
 
+## API Key Usage
+To access the WeatherService API, you must include a valid API key with each request. The API key can be provided in one of the following ways:
+
+1. ***Request Header***: Include the API key in the `x-api-key` header.
+2. ***Query Parameter***: Include the API key as a query parameter named `apikey`.
+
+Example Requests
+Using the x-api-key Header: curl -H "x-api-key: your_api_key" http://localhost:3000/api/v1/weather/coordinates?lat=40.7128&lon=-74.0060
+
+Using the apikey Query Parameter: curl http://localhost:3000/api/v1/weather/coordinates?lat=40.7128&lon=-74.0060&apikey=your_api_key
+
+Development Mode
+When the application is running in development mode (NODE_ENV=development), API key validation is bypassed, and requests are allowed without an API key.
+In production mode (NODE_ENV=production), a valid API key is required.
+Environment Variable
+The API key is configured using the WEATHER_SERVICE_API_KEY environment variable. Add the following to your .env file: 
+WEATHER_SERVICE_API_KEY=your_secure_api_key NODE_ENV=production
+
+Replace your_secure_api_key with your actual API key.
+
+Error Responses
+If the API key is missing or invalid, the server will respond with the following status codes:
+
+401 Unauthorized: If the API key is missing.
+403 Forbidden: If the API key is invalid.
+
 ## Project Structure
 ```
 server/
@@ -73,6 +100,8 @@ server/
 │   │   └── OpenWeatherMapper.ts
 │   ├── models/           # Models
 │   │   └── WeatherServiceData.ts
+│   ├── middleware/       # Middleware
+│   │   └── apiKeyValidator.ts
 │   ├── utils/            # Utility functions and classes
 │   │   ├── WinstonLogger.ts
 │   │   └── Logger.interface.ts
@@ -91,12 +120,6 @@ server/
 
 ## Logging
 This project uses Winston for logging. Logs are categorized into different levels (info, error, debug) and can be configured in `WinstonLogger.ts`.
-
-## Contribution Guidelines
-1. Fork the repository.
-2. Create a new branch for your feature or bugfix.
-3. Commit your changes with clear messages.
-4. Submit a pull request with a detailed description of your changes.
 
 ## Contact Information
 For questions or support, please contact:
