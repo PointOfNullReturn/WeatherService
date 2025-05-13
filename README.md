@@ -31,9 +31,16 @@ WeatherService is a backend application designed to provide weather data to clie
    ```
 4. Create a `.env` file in the root directory by by copying the EXAMPLE.env file and configure the required environment variables:
    ```env
+   # Node Environment
    NODE_ENV=development
-   API_KEY=your_openweather_api_key
+   #Application Port
    PORT=3000
+   # API Key for this API
+   WEATHER_SERVICE_API_KEY='your_api_key_here'
+   # Open Weather API Key
+   OPENWEATHER_API_KEY='your_openweather_api_key'
+   # Open Weather Base URL
+   OPENWEATHER_BASE_URL='https://api.openweathermap.org/data/3.0/onecall'
    ```
 5. Start the development server:
    ```bash
